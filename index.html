@@ -44,4 +44,23 @@
                 const btn = document.createElement('button');
                 btn.className = "w-full text-left p-4 border-2 border-gray-100 rounded-xl hover:border-indigo-500 hover:bg-indigo-50 transition-all font-medium";
                 btn.innerText = text;
-                btn
+                btn.onclick = () => {
+                    score += q.p[i];
+                    if (++current < questions.length) show();
+                    else finish();
+                };
+                optDiv.appendChild(btn);
+            });
+        }
+
+        function finish() {
+            document.getElementById('question-container').classList.add('hidden');
+            const res = document.getElementById('result');
+            res.classList.remove('hidden');
+            let msg = score > 12 ? "У вас высокий уровень EQ! 🏆" : "Хороший результат, развивайте эмпатию! ✨";
+            document.getElementById('score-text').innerText = msg;
+        }
+        show();
+    </script>
+</body>
+</html>
